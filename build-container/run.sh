@@ -3,7 +3,7 @@
 GIT_VARS=$(cd git-master && git log -n 1 --pretty=format:"%h::%cn::%ce::%cd" --date=iso)
 
 mkdir -p vars/docker
-echo $GIT_VARS | awk -F'::' -v OFS=, '{print $1}' > vars/docker/tags
+echo $GIT_VARS | awk -F'::' -v OFS=, '{print "latest",$1}' > vars/docker/tags
 mkdir -p vars/git
 echo $GIT_VARS | awk -F'::' '{print $1}' > vars/git/hash
 echo $GIT_VARS | awk -F'::' '{print $2}' > vars/git/user
